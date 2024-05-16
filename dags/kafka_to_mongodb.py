@@ -9,7 +9,7 @@ import json
 # Fonction pour récupérer les données de Kafka et les charger dans MongoDB
 def kafka_to_mongodb():
     username = 'santoudllo'
-    password = '@Santou20'
+    password = '******'
     dbname = 'belib_database'
     collection_name = 'belib.collection'
     mongodb_uri = f"mongodb+srv://{quote_plus(username)}:{quote_plus(password)}@bike.kvgkgvj.mongodb.net/{dbname}?retryWrites=true&w=majority"
