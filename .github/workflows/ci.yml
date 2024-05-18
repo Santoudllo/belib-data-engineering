@@ -1,6 +1,5 @@
 # .github/workflows/ci.yml
-name: CI/CD Pipeline
-
+name: belib-pipeline
 on:
   push:
     branches:
