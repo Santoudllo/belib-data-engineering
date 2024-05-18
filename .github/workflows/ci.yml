@@ -11,16 +11,16 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/santoudllo
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.8' # ou la version de Python que tu utilises
+          python-version: '3.10.12' # ou la version de Python que tu utilises
 
       - name: Install dependencies
         run: |
