@@ -1,6 +1,5 @@
 from pymongo import MongoClient
 from urllib.parse import quote_plus
-import pandas as pd
 
 class BikeDataPipeline:
     def __init__(self):
@@ -36,3 +35,14 @@ class BikeDataPipeline:
         except Exception as e:
             print(f"Erreur lors de la récupération des données depuis MongoDB : {e}")
             return None
+
+# Fonction principale pour tester la connexion et la récupération des données
+if __name__ == "__main__":
+    pipeline = BikeDataPipeline()
+    data = pipeline.fetch_data_from_mongodb()
+
+    if data:
+        print("Données récupérées depuis MongoDB :")
+        print(data)
+    else:
+        print("Aucune donnée récupérée.")

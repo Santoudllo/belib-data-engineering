@@ -1,5 +1,5 @@
-"""Belib-Pipeline file for ensuring the package is executable
-as `belib-pipeline` and `python -m belib_pipeline`
+"""Belib-workflo file for ensuring the package is executable
+as `belib-workflo` and `python -m belib_workflo`
 """
 import importlib
 from pathlib import Path
