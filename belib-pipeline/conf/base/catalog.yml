@@ -1,6 +1,10 @@
 belib_data:
   type: pandas.CSVDataset
   filepath: data/01_raw/belib_data.csv
+  
+renamed_data:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/renamed_data.csv
 
 preprocessed_data:
   type: pandas.CSVDataset
