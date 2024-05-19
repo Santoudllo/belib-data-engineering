@@ -1,0 +1,16 @@
+belib_data:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/belib_data.csv
+
+preprocessed_data:
+  type: pandas.ParquetDataSet
+  filepath: data/03_primary/preprocessed_data.parquet
+
+model_metrics:
+  type: pandas.JSONDataSet
+  filepath: data/09_tracking/model_metrics.json
+
+trained_model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/random_forest_model.pkl
+  versioned: true
