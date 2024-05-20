@@ -1,0 +1,11 @@
+train_test_split:
+  test_size: 0.2
+  random_state: 42
+
+random_forest:
+  n_estimators: 100
+  random_state: 42
+
+logistic_regression:
+  max_iter: 100
+  random_state: 42

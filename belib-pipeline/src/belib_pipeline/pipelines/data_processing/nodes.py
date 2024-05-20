@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
 import joblib
-import os
+import json
 
 def fetch_data() -> pd.DataFrame:
     return pd.read_csv("data/01_raw/belib_data.csv")
@@ -115,9 +115,6 @@ def train_model(data: pd.DataFrame) -> dict:
     }
 
 def save_metrics(metrics: dict):
-    # Créer le répertoire si nécessaire
-    os.makedirs("data/09_tracking", exist_ok=True)
-    
     # Convertir le dictionnaire de métriques en DataFrame, en traitant séparément les éléments imbriqués
     accuracy_df = pd.DataFrame({"accuracy": [metrics["accuracy"]]})
     report_df = pd.DataFrame(metrics["classification_report"]).transpose()
