@@ -13,7 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -24,9 +25,19 @@ jobs:
       run: |
         python -m venv venv
         source venv/bin/activate
+        pip install --upgrade pip
         pip install -r src/requirements.txt
 
     - name: Run Kedro pipeline
       run: |
         source venv/bin/activate
         kedro run
+
+    - name: Archive artifacts
+      if: success()
+      uses: actions/upload-artifact@v2
+      with:
+        name: kedro-artifacts
+        path: |
+          data/06_models/
+          data/09_tracking/
