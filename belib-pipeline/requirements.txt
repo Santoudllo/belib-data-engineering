@@ -12,9 +12,8 @@ pytest-mock>=1.7.1, <2.0
 ruff~=0.1.8
 scikit-learn~=1.0
 seaborn~=0.12.1
-numpy==1.21.6  # Utilisez une version spécifique de numpy
-pyarrow==5.0.0  # Utilisation d'une version compatible avec toutes les dépendances
-db-dtypes==1.2.0
-deltalake==0.17.0
-pandas-gbq==0.17.0
+pyarrow==8.0.0  # Utiliser une version compatible avec toutes les dépendances
+db-dtypes==1.2.0  # Cette version devrait être compatible avec pyarrow 8.0.0
+deltalake==0.17.0  # Cette version devrait être compatible avec pyarrow 8.0.0
+pandas-gbq==0.17.0  # Cette version devrait être compatible avec pyarrow 8.0.0
 # Ajoutez d'autres dépendances ici...
