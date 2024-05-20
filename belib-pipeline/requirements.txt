@@ -56,9 +56,11 @@ croniter==2.0.5
 cryptography==42.0.7
 cycler==0.12.1
 dacite==1.8.1
+db-dtypes==1.2.0
 debugpy==1.8.1
 decorator==5.1.1
 defusedxml==0.7.1
+deltalake==0.17.4
 Deprecated==1.2.14
 dill==0.3.8
 dnspython==2.6.1
@@ -222,6 +224,8 @@ ptyprocess==0.7.0
 pure-eval==0.2.2
 py-cpuinfo==9.0.0
 py4j==0.10.9.7
+pyarrow==10.0.1
+pyarrow-hotfix==0.6
 pyasn1==0.6.0
 pyasn1_modules==0.4.0
 pycparser==2.22
