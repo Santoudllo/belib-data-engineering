@@ -4,3 +4,7 @@
 #
 #    pip-compile requirements-pyarrow.in
 #
+numpy==1.26.4
+    # via pyarrow
+pyarrow==8.0.0
+    # via -r requirements-pyarrow.in
