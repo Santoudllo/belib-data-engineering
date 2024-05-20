@@ -12,7 +12,7 @@ pytest-mock>=1.7.1, <2.0
 ruff~=0.1.8
 scikit-learn~=1.0
 seaborn~=0.12.1
-pyarrow==8.0.0  # Ajustez cette version pour qu'elle soit compatible avec les autres dépendances
+pyarrow==5.0.0  # Utilisation d'une version compatible avec toutes les dépendances
 db-dtypes==1.2.0
 deltalake==0.17.0
 pandas-gbq==0.17.0
