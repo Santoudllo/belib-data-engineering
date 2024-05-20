@@ -3,16 +3,16 @@ requires = [ "setuptools",]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "belib_workflo"
+name = "belib_pipeline"
 readme = "README.md"
 dynamic = [ "dependencies", "version",]
 
 [project.scripts]
-belib-workflo = "belib_workflo.__main__:main"
+belib-pipeline = "belib_pipeline.__main__:main"
 
 [tool.kedro]
-package_name = "belib_workflo"
-project_name = "Belib-workflo"
+package_name = "belib_pipeline"
+project_name = "Belib-Pipeline"
 kedro_init_version = "0.19.5"
 tools = [ "Linting", "Testing", "Data Structure", "Kedro Viz",]
 example_pipeline = "True"
@@ -27,7 +27,7 @@ ignore = [ "E501",]
 [project.entry-points."kedro.hooks"]
 
 [tool.pytest.ini_options]
-addopts = "--cov-report term-missing --cov src/belib_workflo -ra"
+addopts = "--cov-report term-missing --cov src/belib_pipeline -ra"
 
 [tool.coverage.report]
 fail_under = 0
@@ -41,7 +41,7 @@ docstring-code-format = true
 file = "requirements.txt"
 
 [tool.setuptools.dynamic.version]
-attr = "belib_workflo.__version__"
+attr = "belib_pipeline.__version__"
 
 [tool.setuptools.packages.find]
 where = [ "src",]
