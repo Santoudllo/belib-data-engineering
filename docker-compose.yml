@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  kedro:
+    build: .
+    container_name: kedro_container
+    volumes:
+      - .:/app
+    ports:
+      - "8888:8888"
+    command: ["jupyter", "notebook", "--ip=0.0.0.0", "--no-browser", "--allow-root"]

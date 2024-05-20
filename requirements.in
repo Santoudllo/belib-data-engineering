@@ -1,0 +1,8 @@
+kedro==0.18.3
+pandas==1.4.2
+scikit-learn==1.0.2
+numpy==1.22.3
+pyarrow>=3.0.0,<8.0.0  # Ajusté pour éviter les conflits avec d'autres dépendances
+db-dtypes==1.2.0
+deltalake==0.17.0
+pandas-gbq>=0.17.0,<0.18.0  # Version compatible de pandas-gbq
