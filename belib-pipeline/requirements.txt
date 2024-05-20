@@ -12,8 +12,8 @@ pytest-mock>=1.7.1, <2.0
 ruff~=0.1.8
 scikit-learn~=1.0
 seaborn~=0.12.1
-pyarrow==7.0.0  # Utiliser une version compatible avec toutes les dépendances
-db-dtypes==1.2.0  # Cette version devrait être compatible avec pyarrow 7.0.0
-deltalake==0.17.0  # Cette version devrait être compatible avec pyarrow 7.0.0
-pandas-gbq==0.17.0  # Cette version devrait être compatible avec pyarrow 7.0.0
+pyarrow==3.0.0  # Utiliser une version compatible avec db-dtypes et deltalake
+db-dtypes==1.2.0  # Compatible avec pyarrow 3.0.0
+deltalake==0.2.0  # Version compatible avec pyarrow 3.0.0
+pandas-gbq==0.17.0  # Assurez-vous de la compatibilité avec pyarrow 3.0.0
 # Ajoutez d'autres dépendances ici...
