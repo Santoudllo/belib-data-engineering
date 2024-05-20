@@ -19,7 +19,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.10
+        python-version: '3.10'
 
     - name: Install dependencies
       run: |
@@ -27,16 +27,6 @@ jobs:
         source venv/bin/activate
         pip install --upgrade pip
         pip install -r src/requirements.txt
-
-    - name: Check Python version
-      run: |
-        source venv/bin/activate
-        python --version
-
-    - name: List installed packages
-      run: |
-        source venv/bin/activate
-        pip list
 
     - name: Run Kedro pipeline
       run: |
