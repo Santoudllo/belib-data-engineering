@@ -19,12 +19,10 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install kedro[pandas]
+        
       working-directory: ./belib-pipeline  
 
     - name: Run Kedro pipeline
       run: |
         kedro run
       working-directory: ./belib-pipeline  
-
-######## corrigé 

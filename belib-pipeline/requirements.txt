@@ -87,7 +87,7 @@ Flask-WTF==1.2.1
 fonttools==4.51.0
 fqdn==1.5.1
 frozenlist==1.4.1
-fsspec==2024.5.0
+fsspec==2023.1.0  # Remplacez cette ligne par une version compatible avec Kedro
 gitdb==4.0.11
 GitPython==3.1.43
 google-api-core==2.19.0
@@ -140,4 +140,4 @@ jupyter_server_terminals==0.5.3
 jupyterlab==4.2.0
 jupyterlab_pygments==0.3.0
 jupyterlab_server==2.27.1
-kedro[pandas]  
+kedro[pandas]  # Ajoutez cette ligne pour installer Kedro et ses plugins pandas
