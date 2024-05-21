@@ -26,3 +26,5 @@ jobs:
       run: |
         kedro run
       working-directory: ./belib-pipeline  
+
+######## corrigé 
