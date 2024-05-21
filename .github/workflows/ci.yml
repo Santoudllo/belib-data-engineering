@@ -20,9 +20,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install kedro
+      working-directory: ./belib-pipeline  # Utiliser un chemin relatif
 
     - name: Run Kedro pipeline
       run: |
         kedro install
         kedro run
-      working-directory: /home/santoudllo/Desktop/Projet_perso/belib-data-engineering/belib-pipeline  
+      working-directory: ./belib-pipeline  # Utiliser un chemin relatif
