@@ -143,4 +143,4 @@ jupyterlab_server==2.27.1
 kedro[pandas.csvdataset]==0.19.5  # Assurez-vous que pandas est bien spécifié
 imbalanced-learn==0.12.2
 scikit-learn==1.1.1
-kedro[pandas]
+pandas==1.5.3 # mis à jour 
