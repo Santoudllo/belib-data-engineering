@@ -142,3 +142,5 @@ jupyterlab_pygments==0.3.0
 jupyterlab_server==2.27.1
 kedro==0.19.5  # Assurez-vous que la version de kedro est correcte
 pandas==1.5.3  # Assurez-vous que pandas est bien spécifié
+imbalanced-learn==0.12.2
+scikit-learn==1.1.1
