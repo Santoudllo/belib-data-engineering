@@ -22,7 +22,5 @@ jobs:
         pip install -r requirements.txt
       working-directory: ./belib-pipeline  
 
-    - name: Run Kedro pipeline
-      run: |
-        kedro run
-      working-directory: ./belib-pipeline
+    
+      
