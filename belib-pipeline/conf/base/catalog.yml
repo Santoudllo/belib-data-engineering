@@ -1,20 +1,20 @@
 belib_data:
-  type: kedro.extras.datasets.pandas.CSVDataset
+  type: pandas.CSVDataset
   filepath: data/01_raw/belib_data.csv
 
 preprocessed_data:
-  type: kedro.extras.datasets.pandas.ParquetDataset
+  type: pandas.ParquetDataset
   filepath: data/03_primary/preprocessed_data.parquet
 
 accuracy_metrics:
-  type: kedro.extras.datasets.pandas.JSONDataset
+  type: pandas.JSONDataset
   filepath: data/09_tracking/accuracy.json
 
 classification_report_metrics:
-  type: kedro.extras.datasets.pandas.JSONDataset
+  type: pandas.JSONDataset
   filepath: data/09_tracking/classification_report.json
 
 trained_model:
-  type: kedro.extras.datasets.pickle.PickleDataset
+  type: pickle.PickleDataset
   filepath: data/06_models/random_forest_model.pkl
   versioned: true
