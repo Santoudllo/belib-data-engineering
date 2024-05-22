@@ -23,5 +23,5 @@ jobs:
       working-directory: ./belib-pipeline  
 
     - name: sauveagrde 
-      script: ls  
+      run: ls  
       
