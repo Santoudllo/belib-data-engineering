@@ -1,0 +1,9 @@
+{
+	"name": "airflow-test",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "5327cd41-4396-4459-adb6-c7f8c67daf3a",
+		"tenantId": "38e72bba-3c22-4382-9323-ac1612931297"
+	}
+}
