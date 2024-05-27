@@ -1,0 +1,26 @@
+{
+	"name": "Orchester_API",
+	"properties": {
+		"description": "recuperation des données de l'api",
+		"activities": [
+			{
+				"name": "API",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "GET",
+					"url": "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/belib-points-de-recharge-pour-vehicules-electriques-disponibilite-temps-reel/records"
+				}
+			}
+		],
+		"annotations": []
+	}
+}
