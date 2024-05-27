@@ -19,6 +19,36 @@
 					"method": "GET",
 					"url": "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/belib-points-de-recharge-pour-vehicules-electriques-disponibilite-temps-reel/records"
 				}
+			},
+			{
+				"name": "Python1",
+				"type": "DatabricksSparkPython",
+				"dependsOn": [
+					{
+						"activity": "API",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"parameters": [
+						"import logging\r\nimport azure.functions as func\r\nfrom pymongo import MongoClient\r\nfrom urllib.parse import quote_plus\r\nimport requests\r\n\r\nclass BikeDataPipeline:\r\n    def __init__(self):\r\n        self.username = 'santoudllo'\r\n        self.password = '@Santou20'\r\n        self.dbname = 'belib_database'\r\n        self.collection_name = 'belib.collection'\r\n        self.mongodb_uri = f\"mongodb+srv://{quote_plus(self.username)}:{quote_plus(self.password)}@bike.kvgkgvj.mongodb.net/{self.dbname}?retryWrites=true&w=majority\"\r\n        self.api_url = \"https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/belib-points-de-recharge-pour-vehicules-electriques-donnees-statiques/records\"\r\n\r\n    def fetch_data_from_api(self):\r\n        all_data = []\r\n        start = 0\r\n        rows = 100  # Nombre de résultats par page\r\n        while True:\r\n            params = {'start': start, 'rows': rows}\r\n            response = requests.get(self.api_url, params=params)\r\n            if response.status_code == 200:\r\n                data = response.json()\r\n                print(f\"Page {start // rows + 1} récupérée avec succès.\")\r\n                print(f\"Réponse brute de l'API : {data}\")  # Message de débogage pour afficher la réponse brute\r\n                results = data.get('results', [])\r\n                if not results:\r\n                    print(\"Aucun résultat trouvé sur cette page.\")\r\n                    break\r\n                all_data.extend(results)\r\n                start += rows\r\n            else:\r\n                print(f\"Erreur lors de la récupération des données depuis l'API : {response.status_code}\")\r\n                break\r\n        return all_data\r\n\r\n    def load_data_to_mongodb(self, data):\r\n        if data:\r\n            client = MongoClient(self.mongodb_uri)\r\n            db = client[self.dbname]\r\n            collection = db[self.collection_name]\r\n            # Convertir chaque entrée pour insérer uniquement les champs pertinents\r\n            formatted_data = [record for record in data]\r\n            collection.insert_many(formatted_data)\r\n            print(\"Données récupérées avec succès depuis l'API et enregistrées dans MongoDB.\")\r\n            return True\r\n        else:\r\n            print(\"Échec de la récupération des données depuis l'API.\")\r\n            return False\r\n\r\ndef main(req: func.HttpRequest) -> func.HttpResponse:\r\n    logging.info('Python HTTP trigger function processed a request.')\r\n    \r\n    # Création de l'instance de la pipeline\r\n    pipeline = BikeDataPipeline()\r\n\r\n    # Récupération des données de l'API\r\n    data = pipeline.fetch_data_from_api()\r\n    print(f\"Nombre total d'enregistrements récupérés : {len(data)}\")\r\n\r\n    # Chargement des données dans MongoDB\r\n    if data:\r\n        success = pipeline.load_data_to_mongodb(data)\r\n        if success:\r\n            return func.HttpResponse(\"Données insérées avec succès dans MongoDB\", status_code=200)\r\n        else:\r\n            return func.HttpResponse(\"Échec du chargement des données dans MongoDB\", status_code=500)\r\n    else:\r\n        return func.HttpResponse(\"Aucune donnée récupérée depuis l'API.\", status_code=204)\r\n"
+					],
+					"libraries": [
+						{
+							"jar": ""
+						}
+					]
+				}
 			}
 		],
 		"annotations": []
