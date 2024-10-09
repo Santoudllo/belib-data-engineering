@@ -1,30 +1,48 @@
+import os
 from pymongo import MongoClient
-from urllib.parse import quote_plus
+from dotenv import load_dotenv
 
 class BikeDataPipeline:
     def __init__(self):
-        self.username = 'santoudllo'
-        self.password = '@Santou20'  # Remplacez par votre mot de passe réel
-        self.dbname = 'belib_database'
-        self.collection_name = 'belib.collection'
-        self.mongodb_uri = f"mongodb+srv://{quote_plus(self.username)}:{quote_plus(self.password)}@bike.kvgkgvj.mongodb.net/{self.dbname}?retryWrites=true&w=majority"
+        # Charger les variables d'environnement
+        load_dotenv()
 
-    def fetch_data_from_mongodb(self):
+        # Utilisation de l'URI MongoDB directement depuis l'environnement
+        self.mongodb_uri = os.getenv('MONGO_URI')
+
+        # Vérification que l'URI est bien chargée
+        if not self.mongodb_uri:
+            raise ValueError("L'URI MongoDB est manquante dans les variables d'environnement.")
+
+        self.dbname = 'database_belib'  # Nom de la base de données mis à jour
+        self.collection_name = 'belib'  # Nom de la collection mis à jour
+
+    def fetch_data_from_mongodb(self, query=None):
+        """
+        Récupérer des données depuis MongoDB avec une requête optionnelle.
+
+        :param query: dictionnaire représentant la requête MongoDB (par défaut, {} pour tout récupérer).
+        :return: liste de documents récupérés ou None en cas d'erreur.
+        """
+        if query is None:
+            query = {}  # Si aucune requête spécifique n'est fournie, récupérer tous les documents
+
+        client = None
         try:
-            # Connect to MongoDB
+            # Connexion à MongoDB
             client = MongoClient(self.mongodb_uri)
             print("Connexion à MongoDB réussie.")
             
-            # Access the database
+            # Accès à la base de données
             db = client[self.dbname]
             print(f"Accès à la base de données '{self.dbname}' réussi.")
             
-            # Access the collection
+            # Accès à la collection
             collection = db[self.collection_name]
             print(f"Accès à la collection '{self.collection_name}' réussi.")
             
-            # Fetch the data
-            data = list(collection.find({}))
+            # Récupérer les données selon la requête fournie
+            data = list(collection.find(query))
             if not data:
                 print("Aucun document trouvé dans la collection.")
             else:
@@ -35,12 +53,22 @@ class BikeDataPipeline:
         except Exception as e:
             print(f"Erreur lors de la récupération des données depuis MongoDB : {e}")
             return None
+        
+        finally:
+            # Assurer que la connexion est bien fermée
+            if client:
+                client.close()
+                print("Connexion à MongoDB fermée.")
 
 # Fonction principale pour tester la connexion et la récupération des données
 if __name__ == "__main__":
+    # Charger les informations d'identification MongoDB depuis les variables d'environnement
     pipeline = BikeDataPipeline()
+
+    # Exécution d'une requête pour récupérer les données
     data = pipeline.fetch_data_from_mongodb()
 
+    # Affichage des données récupérées
     if data:
         print("Données récupérées depuis MongoDB :")
         print(data)
