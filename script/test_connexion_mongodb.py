@@ -1,18 +1,22 @@
 import pymongo
+from dotenv import load_dotenv
+import os
 
-# Informations de connexion
-username = "alimousantou"
-password = "c2U16agfAPFf8cqH" # definir le mot de pass 
-dbname = "database_belib"
+# Charger les variables d'environnement à partir  .env
+load_dotenv()
 
-# URL de connexion
-connection_string = f"mongodb+srv://alimousantou:<db_password>@ailab.wku4a.mongodb.net/"
+username = os.getenv("MONGO_USERNAME")
+password = os.getenv("MONGO_PASSWORD")
+dbname = os.getenv("MONGO_DBNAME")
+connection_string = os.getenv("MONGO_URI").replace("<db_password>", password)
 
 try:
     # Connexion à la base de données
+
     client = pymongo.MongoClient(connection_string)
 
-    # Vérifier la connexion
+    # Vérification de  la connexion
+
     if client:
         print("Connexion à MongoDB réussie !")
     else:
