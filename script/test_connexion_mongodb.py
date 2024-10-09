@@ -1,12 +1,12 @@
 import pymongo
 
 # Informations de connexion
-username = "santoudllo"
-password = "*****" # definir le mot de pass 
-dbname = "belib_database"
+username = "alimousantou"
+password = "c2U16agfAPFf8cqH" # definir le mot de pass 
+dbname = "database_belib"
 
 # URL de connexion
-connection_string = f"mongodb+srv://santoudllo:<password>@bike.kvgkgvj.mongodb.net/?retryWrites=true&w=majority&appName=bike"
+connection_string = f"mongodb+srv://alimousantou:<db_password>@ailab.wku4a.mongodb.net/"
 
 try:
     # Connexion à la base de données
