@@ -1,4 +1,6 @@
 import requests
+from dotenv import load_dotenv
+import os
 
 class BelibAPIClient:
     def __init__(self, api_url):
@@ -12,14 +14,22 @@ class BelibAPIClient:
                 total_records = json_data.get('total', None)
                 return json_data, total_records
             else:
-                print(f"Failed to fetch data. Status code: {response.status_code}")
+                print(f"Failed to fetch data. Status code: {response.status_code}, Response: {response.text}")
                 return None, None
         except Exception as e:
             print(f"An error occurred: {e}")
             return None, None
 
 def main():
-    api_url = "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/belib-points-de-recharge-pour-vehicules-electriques-disponibilite-temps-reel/records"
+    # Charger les variables d'environnement
+    load_dotenv()
+
+    # Récupérer l'URL de l'API depuis le fichier .env
+    api_url = os.getenv("API_URL")
+    if not api_url:
+        print("API_URL is not set in the .env file.")
+        return
+
     client = BelibAPIClient(api_url)
     data, total_records = client.fetch_data()
     if data:
