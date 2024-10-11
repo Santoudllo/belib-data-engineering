@@ -24,3 +24,13 @@ try:
 
 except Exception as e:
     print("Erreur lors de la connexion à MongoDB :", e)
+db = client[dbname]
+collection = db['belib']
+
+# Vérifie si des documents existent dans la collection
+count = collection.count_documents({})
+print(f"Nombre de documents dans la collection 'belib' : {count}")
+
+# Affiche quelques documents pour vérifier le contenu
+for doc in collection.find().limit(5):
+    print(doc)

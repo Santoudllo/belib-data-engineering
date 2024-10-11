@@ -5,3 +5,4 @@ logs/
 # Ignorer les fichiers de configuration spécifiques
 config/server.properties
 config/zookeeper.properties
+spark-3.5.3-bin-hadoop3/
